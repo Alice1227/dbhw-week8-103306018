@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     Member.check(req.body.account, function(err, member) {
-        if (err || req.body.password != member.password) {
+        if (req.body.password != member.password) {
             res.send('Your password is incorrect!');
         } else {
             req.session.member = member;
